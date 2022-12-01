@@ -17,7 +17,7 @@ function indent() {
 
 echo '-----> Installing binary dependencies for ActiveStorage Preview'
 
-SFFMPEG_VERSION="4.2.3"
+SFFMPEG_VERSION="5.1.1"
 
 # Store which ffmpeg version was installed in the cache to bust the cache if it changes
 if [ -f $CACHE_DIR/.apt/SFFMPEG ]; then
@@ -52,8 +52,8 @@ apt-get $APT_OPTIONS update >/dev/null
 apt-get $APT_OPTIONS -y -d install --reinstall poppler-utils >/dev/null
 echo -n '.'
 
-SFFMPEG_FILENAME="sffmpeg_${SFFMPEG_VERSION}_amd64.deb"
-curl -sL -o "$APT_CACHE_DIR/archives/$SFFMPEG_FILENAME" "https://heroku-activestorage-default.s3.amazonaws.com/sffmpeg/$SFFMPEG_FILENAME"
+SFFMPEG_FILENAME="ffmpeg-release-amd64-static.tar.xz"
+curl -sL -o "$APT_CACHE_DIR/archives/$SFFMPEG_FILENAME" "https://johnvansickle.com/ffmpeg/releases/$SFFMPEG_FILENAME"
 echo -n '.'
 
 echo ''
